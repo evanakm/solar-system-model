@@ -16,7 +16,7 @@ export type GlobalState = {
 
 const solarSystemModel = new SolarSystemModel(5);
 const controller = new Controller(solarSystemModel);
-const cameraModel = new CameraModel(solarSystemModel.Sun, new Vector3(0,0,100), Math.PI/4, 70, 0, -0.017);
+const cameraModel = new CameraModel(solarSystemModel.Sun, new Vector3(0,0,60), Math.PI/6, 70, 0, -0.017);
 const sidePanelView = new SidePanelView(solarSystemModel, controller);
 
 const initialState = {

@@ -41,10 +41,12 @@ export class SatelliteModel {
 	private uuid: SatelliteIdentifier;
 
 	// Angle in radians
-	private currentPhase = 0;
-	private phaseAtLastCapture = 0;
+	private currentOrbitalPhase = 0;
+	private orbitalPhaseAtLastCapture = 0;
 	private currentTime = 0;
 	private timeAtLastCapture = 0;
+	private currentRotationalPhase = 0;
+	private rotationalPhaseAtLastCapture = 0;
 
     constructor(parent: SatelliteModel, parameters: SatelliteParameters, private texturePath: string, initialPhase: number = 0) {
 		this.uuid = generateV4();
@@ -68,8 +70,8 @@ export class SatelliteModel {
 		this.mesh = new Mesh(geometry, material);
 		this.mesh.rotation.x += Math.PI / 2;
 
-		this.phaseAtLastCapture = initialPhase;
-		this.setCoordinateFrame(this.phaseAtLastCapture);
+		this.orbitalPhaseAtLastCapture = initialPhase;
+		this.setCoordinateFrame(this.orbitalPhaseAtLastCapture);
 
 		if (parent) {
 			this.parent.addChild(this);
@@ -140,16 +142,17 @@ export class SatelliteModel {
 		// renderer.renderLists.dispose();
 	}
 
-	public update(time: number): void {
-		this.currentTime = time;
-		this.mesh.rotation.y += this.parameters.rotationalAngularVelocity * 0.01;
+	public update(timeInSeconds: number): void {
+		this.currentTime = timeInSeconds;
+		this.mesh.rotation.y = this.parameters.rotationalAngularVelocity * (this.currentTime - this.timeAtLastCapture) + this.rotationalPhaseAtLastCapture;
+		this.currentRotationalPhase = this.mesh.rotation.y;
 
-		this.currentPhase = this.parameters.orbitalAngularVelocity * (this.currentTime - this.timeAtLastCapture) + this.phaseAtLastCapture;
-		this.setCoordinateFrame(this.currentPhase);
+		this.currentOrbitalPhase = this.parameters.orbitalAngularVelocity * (this.currentTime - this.timeAtLastCapture) + this.orbitalPhaseAtLastCapture;
+		this.setCoordinateFrame(this.currentOrbitalPhase);
 		this.setBody()
 
 		for (const satellite of this.children) {
-			satellite.update(time);
+			satellite.update(timeInSeconds);
 		}
 	}
 
@@ -197,7 +200,8 @@ export class SatelliteModel {
 	// This needs to be called when the speed is changed, otherwise the object can "jump"
 	private capturePhaseAndTime(): void {
 		this.timeAtLastCapture = this.currentTime;
-		this.phaseAtLastCapture = this.currentPhase;
+		this.orbitalPhaseAtLastCapture = this.currentOrbitalPhase;
+		this.rotationalPhaseAtLastCapture = this.currentRotationalPhase;
 	}
 
 	private scaleThisAndAllChildren(scalingFactor: number): void {

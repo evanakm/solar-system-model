@@ -19,11 +19,11 @@ export class SolarSystemModel {
 
         this.sunParams = {
             bodyRadius: solarRadius,
-            rotationalAngularVelocity: 0.02,
+            rotationalAngularVelocity: 0.2,
             orbitalRadius: 0,
             orbitalAngularVelocity: 0
         };
-        this.sun = new SatelliteModel(null, this.sunParams, 'http://localhost:3000/Assets/Textures/sun.jpg');
+        this.sun = new SatelliteModel(null, this.sunParams, 'Assets/Textures/sun.jpg');
     
         const TAU = Math.PI * 2;
 
@@ -37,7 +37,7 @@ export class SolarSystemModel {
         const earthParams = SatelliteModel.createSatelliteParameters(0.4, TAU / 12, 25, TAU / 40);
         const earthId = this.addNewSatellite('Earth', this.sun.UUID, earthParams, 'Assets/Textures/earth.jpg');
 
-        const moonParams = SatelliteModel.createSatelliteParameters(1, TAU / 4, 8, TAU / 10);
+        const moonParams = SatelliteModel.createSatelliteParameters(0.2, TAU / 4, 8, TAU / 10);
         const moonId = this.addNewSatellite('Earth\'s Moon', earthId, moonParams, 'Assets/Textures/moon.jpg');
 
         const marsParams = SatelliteModel.createSatelliteParameters(0.6, TAU / 13, 38, TAU / 55);
