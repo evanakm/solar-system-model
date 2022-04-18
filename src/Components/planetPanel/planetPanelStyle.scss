@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/*
+body {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #151515;
+}
+*/
+/*div {
+  position: absolute;
+}*/
+
+/*
+
++------------------------------------------------------------+
+|                namecontainer bodyname                      |
++------------------------------------------------------------+
+|                      nopad nomarg                          |
+|    +---------------------+------------+  +-------------+   |
+|    | slidercontainercell |            |  |             |   |
+|    +---------------------+ rangevalue |  | ivoryborder |   |
+|    |       bodynote      |            |  |planet-canvas|   |
+|    +---------------------+------------+  |             |   |
+|    | slidercontainercell |            |  +-------------+   |
+|    +---------------------+ rangevalue |  | ivoryborder |   |
+|    |       bodynote      |            |  |             |   |
+|    +---------------------+------------+  +-------------+   |
+|    | slidercontainercell |            |  | ivoryborder |   |
+|    +---------------------+ rangevalue |  |             |   |
+|    |       bodynote      |            |  +-------------+   |
+|    +---------------------+------------+                    |
+|                                                            |
++------------------------------------------------------------+
+
+*/
+
+.namecontainer {
+    background-color: #227722
+}
+
+.bodyname {
+    color: wheat;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    font-size: 1.3em;
+    padding-bottom:0px;
+}  
+
+.slidercontainertable{
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:2px;
+  margin-bottom:3.5px;
+}
+
+.planet-canvas{
+    width:79px;
+    height:79px;
+}
+
+.ivoryborder {
+  border: 3px solid Ivory;
+}
+
+.turqborder {
+  border: 3px solid LightSeaGreen;
+}
+
+.coralborder {
+  border: 3px solid coral;
+}
+
+.nopad {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.nomarg {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.active, .collapsible:hover {
+  background-color: #551111;
+}
+
+.panelcontent {
+  padding: 0 2px;
+  display: none;
+  overflow: hidden;
+}
