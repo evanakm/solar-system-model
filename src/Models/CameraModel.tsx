@@ -1,6 +1,6 @@
 import { PerspectiveCamera, Vector3, Vector3Tuple } from 'three';
 import { SatelliteModel } from './SatelliteModel';
-import { degreesToRads } from './Utilities/MathFunctions';
+import { degreesToRads } from '../Utilities/MathFunctions';
 
 export class CameraModel {
 

@@ -15,8 +15,12 @@ function SolarSystemViewport() {
         const contWidth = window.innerWidth;
         const contHeight = window.innerHeight;
 
-        document.querySelector('canvas').style.width=contWidth.toString()+'px';
-        document.querySelector('canvas').style.height=contHeight.toString()+'px';
+        //document.querySelector('canvas').style.width=contWidth.toString()+'px';
+        //document.querySelector('canvas').style.height=contHeight.toString()+'px';
+
+        (document.getElementById('solar-system').firstElementChild as HTMLElement).style.width=contWidth.toString()+'px';
+        (document.getElementById('solar-system').firstElementChild as HTMLElement).style.height=contHeight.toString()+'px';
+
 
         ssViewState.setAspectRatio(contWidth / contHeight);
         //ssViewState.setAspectRatio(1);

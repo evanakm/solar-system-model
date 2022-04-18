@@ -6,6 +6,7 @@ export class SolarSystemView {
     private scene: Scene = new Scene();
     private renderer: WebGLRenderer = new WebGLRenderer({ antialias: true });
     private time: number = 0;
+    private startTime = performance.now();
 
     constructor(private ssModel: SolarSystemModel, private cameraModel: CameraModel) {
         this.cameraModel = cameraModel;
@@ -41,9 +42,8 @@ export class SolarSystemView {
         requestAnimationFrame(this.animate.bind(this));
     
         this.ssModel.Sun.update(this.time);
-
         this.cameraModel.update(this.time);
-        this.time += 1;
+        this.time = (performance.now() - this.startTime) * 0.001;
     
         this.renderer.render(this.scene, this.cameraModel.Camera);
     };

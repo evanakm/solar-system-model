@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import Sidebar from './Components/Sidebar';
 import { MVCContextProvider } from './Contexts/MVCContext';
 import SolarSystemViewport from './Components/SolarSystemViewport';
+import SidebarWithPanels from './Components/SidebarWithPanels';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
 
             <div className="wrapper d-flex align-items-stretch">
                 <MVCContextProvider>
-                    <Sidebar/>
+                    <SidebarWithPanels />
                     <div className="content">
                         <SolarSystemViewport />
                     </div>
